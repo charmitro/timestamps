@@ -1,18 +1,13 @@
 package server
 
 import (
-	"flag"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"testing"
 )
 
-var port = flag.String("port", "8080", "port to listen to")
-
 func TestPeriod1h(t *testing.T) {
-	req, err := http.Get(
-		fmt.Sprintf("http://localhost:%s/ptlist?period=1h&tz=UTC&t1=20210714T204603Z&t2=20210715T123456Z", *port))
+	req, err := http.Get("http://localhost:8080/ptlist?period=1h&tz=UTC&t1=20210714T204603Z&t2=20210715T123456Z")
 
 	if err != nil {
 		t.Fatal(err)
